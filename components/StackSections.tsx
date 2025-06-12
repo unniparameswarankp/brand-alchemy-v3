@@ -12,8 +12,7 @@ const sections = [
     id: 1,
     title: 'Software Development',
     video: '/videos/webdevelopment.mp4',
-    description:
-      'We craft scalable, secure, and intelligent software solutions that power your ideas. From dynamic websites to enterprise-grade systems, our code is clean, efficient, and future-proof — built to adapt and grow with your business.',
+    description: 'TWe craft scalable, secure, and intelligent software solutions that power your ideas. From dynamic websites to enterprise-grade systems, our code is clean, efficient, and future-proof — built to adapt and grow with your business.',
     items: [
       { icon: 'FaCode', label: 'Creative Code' },
       { icon: 'FaMagic', label: 'Digital Alchemy' },
@@ -24,7 +23,51 @@ const sections = [
       { icon: 'FaEye', label: 'Visual Strategy' },
     ],
   },
-  // other sections remain unchanged...
+  {
+    id: 2,
+    title: 'App Development',
+    video: '/videos/ecommerce.mp4',
+    description: 'Build intuitive and high-performance mobile apps that deliver seamless experiences across devices. Whether its iOS, Android, or cross-platform, we focus on usability, performance, and real-world impact for every tap and swipe.',
+    items: [
+      { icon: 'FaBrain', label: 'AI Enhanced' },
+      { icon: 'FaPaintBrush', label: 'Custom Design' },
+      { icon: 'FaServer', label: 'Backend Ready' },
+      { icon: 'FaCloud', label: 'Cloud Native' },
+      { icon: 'FaMobileAlt', label: 'Responsive' },
+      { icon: 'FaChartLine', label: 'Analytics' },
+      { icon: 'FaShieldAlt', label: 'Security First' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Designing',
+    video: '/videos/designing.mp4',
+    description: 'Design that doesn’t just look good — it feels right. From branding and UI/UX to print and motion graphics, we bring clarity, consistency, and emotion to every pixel, creating designs that speak louder than words.',
+    items: [
+      { icon: 'FaPalette', label: 'Visual Identity' },
+      { icon: 'FaDraftingCompass', label: 'Precision Design' },
+      { icon: 'FaPaintBrush', label: 'Illustration' },
+      { icon: 'FaShapes', label: 'Modern Style' },
+      { icon: 'FaVectorSquare', label: 'UI Components' },
+      { icon: 'FaAdjust', label: 'Contrast Aware' },
+      { icon: 'FaBezierCurve', label: 'Smooth Curves' },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Digital Art',
+    video: '/videos/digitalart.mp4',
+    description: 'Explore the intersection of imagination and pixels. We create captivating digital illustrations, concept art, and visual storytelling pieces — each one blending creativity, technology, and soul to turn your vision into visual masterpieces.',
+    items: [
+      { icon: 'FaPencilAlt', label: 'Sketch' },
+      { icon: 'FaPaintRoller', label: 'Coloring' },
+      { icon: 'FaCameraRetro', label: 'Photography' },
+      { icon: 'FaFilm', label: 'Animation' },
+      { icon: 'FaLayerGroup', label: 'Layered Workflow' },
+      { icon: 'FaTools', label: 'Brushes' },
+      { icon: 'FaSmileBeam', label: 'Emotion' },
+    ],
+  },
 ];
 
 export default function Stacked3DSections() {
