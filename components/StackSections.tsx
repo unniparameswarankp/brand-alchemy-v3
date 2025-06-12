@@ -75,11 +75,12 @@ export default function Stacked3DSections() {
 
 useEffect(() => {
   const ctx = gsap.context(() => {
-    gsap.utils.toArray('.stack-panel').forEach((panel: any) => {
-      const title = panel.querySelector('h2');
-      const paragraph = panel.querySelector('p');
-      const items = panel.querySelectorAll('.list-items');
-      const video = panel.querySelector('video');
+   gsap.utils.toArray('.stack-panel').forEach((panel) => {
+  const element = panel as HTMLElement;
+  const title = element.querySelector('h2');
+  const paragraph = element.querySelector('p');
+  const items = element.querySelectorAll('.list-items');
+  const video = element.querySelector('video');
 
     gsap.fromTo(
     video,
