@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 export default function InfiniteScrollingText() {
-  const containerRef = useRef(null);
-  const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const text1Ref = useRef<HTMLDivElement | null>(null);
+  const text2Ref = useRef<HTMLDivElement | null>(null);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
   const lastScrollY = useRef(0);
 
@@ -18,16 +18,17 @@ export default function InfiniteScrollingText() {
     if (!text1 || !text2 || !container) return;
 
     // Set initial positions
+    const width = text1.offsetWidth;
     gsap.set(text1, { x: 0 });
-    gsap.set(text2, { x: text1.offsetWidth });
+    gsap.set(text2, { x: width });
 
     tweenRef.current = gsap.to([text1, text2], {
-      x: `-=${text1.offsetWidth}`,
+      x: `-=${width}`,
       duration: 20,
       ease: 'linear',
       repeat: -1,
       modifiers: {
-        x: (x) => `${parseFloat(x) % text1.offsetWidth}px`,
+        x: (x) => `${parseFloat(x) % width}px`,
       },
     });
 
