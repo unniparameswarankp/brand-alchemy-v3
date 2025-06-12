@@ -13,18 +13,18 @@ const paragraph =
 export default function ScrollRevealSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const paraRef = useRef<HTMLHeadingElement | null>(null);
-  const buttonRef = useRef<HTMLAnchorElement | null>(null); // ✅ correct type
+  const buttonRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
-    const chars = paraRef.current?.querySelectorAll("span");
+    if (!paraRef.current || !buttonRef.current || !sectionRef.current) return;
 
-    if (!chars || !buttonRef.current) return;
+    const chars = paraRef.current.querySelectorAll('span') as NodeListOf<HTMLSpanElement>;
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 50%",
-        end: "top top",
+        start: 'top 50%',
+        end: 'top top',
         scrub: true,
       },
     });
@@ -35,14 +35,18 @@ export default function ScrollRevealSection() {
       {
         opacity: 1,
         stagger: 0.05,
-        ease: "none",
+        ease: 'none',
       }
     ).fromTo(
       buttonRef.current,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, ease: "power2.out" },
-      "+=0.2"
+      { opacity: 1, y: 0, ease: 'power2.out' },
+      '+=0.2'
     );
+
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
@@ -52,20 +56,19 @@ export default function ScrollRevealSection() {
           ref={paraRef}
           className="text-xl md:text-2xl font-light mb-6 leading-relaxed"
         >
-          {paragraph.split("").map((char, i) => (
+          {paragraph.split('').map((char, i) => (
             <span key={i} className="inline-block whitespace-pre">
               {char}
             </span>
           ))}
         </h2>
 
-        {/* ✅ Link wrapper for ref */}
         <Link href="#" legacyBehavior>
           <a
             ref={buttonRef}
             className="inline-flex items-center gap-3 arrow-btn transition-all duration-300 opacity-0"
           >
-            Read More{" "}
+            Read More
             <img
               className="brightness-0"
               src="/arrow_right_white.svg"
