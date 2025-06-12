@@ -168,7 +168,7 @@ useEffect(() => {
     <p className="text-lg mb-2">{section.description}</p>
 <div className="flex flex-wrap justify-center gap-4">
   {section.items.map((item, idx) => {
-    const Icon = Fa[item.icon];
+   const Icon = Fa[item.icon as keyof typeof Fa];
     return (
       <div
         key={idx}

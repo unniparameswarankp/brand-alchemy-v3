@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function MenuToggle() {
   const [open, setOpen] = useState(false);
-  const [showServices, setShowServices] = useState(false);
 
   const menuItems = [
     "Home",
