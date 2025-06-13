@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -14,12 +14,15 @@ export default function Banner() {
   const bottomRef = useRef<HTMLHeadingElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const nextSectionRef = useRef<HTMLDivElement>(null); // target to scroll on click
+  const [videoReady, setVideoReady] = useState(false);
+
 
   const title = "Own Your Identity.";
 
 useEffect(() => {
+  if (!videoReady || !videoRef.current) return;
+
   const video = videoRef.current;
-  if (!video) return;
 
   // Scroll zoom effect
   gsap.fromTo(
@@ -39,11 +42,11 @@ useEffect(() => {
 
   const tl = gsap.timeline();
 
-  // 1. Fade in video
+  // 1. Fade in video wrapper
   tl.fromTo(
     videoWrapRef.current,
     { opacity: 0 },
-    { opacity: 1, duration: 1.2, ease: "power2.out", delay: 0.5 }
+    { opacity: 1, duration: 1.2, ease: "power2.out", delay: 0.2 }
   );
 
   // 2. Fade in logo
@@ -81,7 +84,8 @@ useEffect(() => {
       duration: 100,
     });
   }
-}, []);
+}, [videoReady]);
+
 
 
   // Parallax on mouse move
@@ -127,6 +131,7 @@ useEffect(() => {
             muted
             loop
             playsInline
+            onCanPlay={() => setVideoReady(true)}
             style={{
               width: "100%",
               height: "100%",
